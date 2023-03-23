@@ -1,10 +1,18 @@
 const { google } = require('googleapis');
-const keys = require('./keys.json');
+// const keys = require('./keys.json');
+require('dotenv').config({ path: './TEST.env' })
+
+// const client = new google.auth.JWT(
+//     keys.client_email,
+//     null,
+//     keys.private_key,
+//     ['https://www.googleapis.com/auth/spreadsheets']
+// );
 
 const client = new google.auth.JWT(
-    keys.client_email,
+    process.env.client_email,
     null,
-    keys.private_key,
+    process.env.private_key,
     ['https://www.googleapis.com/auth/spreadsheets']
 );
 
