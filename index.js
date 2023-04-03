@@ -10,12 +10,16 @@ app.get('/items/:option', async (req, res) => {
     const { option } = req.params;
     let data = await getDataFromSheet('1GI7rgBl2ziVPUR-wtK-7E2-psdIAOywjAf5N2IJANBI');
     data.shift();
-    const filteredData = data.filter(row => row[6].toLowerCase() === option);
-    if (option === "all") {
-        data.shift();
-        res.json(data);
+    if (option === "fruits") {
+        const filteredData = data.filter(row => row[5].toLowerCase() === option);
+        res.json(filteredData);
+    }
+    else if (option === "vegetable") {
+        const filteredData = data.filter(row => row[5].toLowerCase() === option);
+        res.json(filteredData);
     }
     else {
+        const filteredData = data.filter(row => row[6].toLowerCase() === option);
         res.json(filteredData);
     }
 });
