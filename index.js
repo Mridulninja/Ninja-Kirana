@@ -22,6 +22,7 @@ app.get('/items/:option', async (req, res) => {
         const filteredData = data.filter(row => row[6].toLowerCase() === option);
         res.json(filteredData);
     }
+    console.log("hello");
 });
 
 app.listen(port, () => {
