@@ -14,15 +14,15 @@ app.get('/items/:option', async (req, res) => {
         res.json(data);
     }
     else if (option === "fruits") {
-        const filteredData = data.filter(row => row[5].toLowerCase() === option);
+        const filteredData = data.filter(row => row[4].toLowerCase() === option);
         res.json(filteredData);
     }
     else if (option === "vegetable") {
-        const filteredData = data.filter(row => row[5].toLowerCase() === option);
+        const filteredData = data.filter(row => row[4].toLowerCase() === option);
         res.json(filteredData);
     }
     else {
-        const filteredData = data.filter(row => row[6].toLowerCase() === option);
+        const filteredData = data.filter(row => row[5].toLowerCase() === option);
         res.json(filteredData);
     }
     // console.log("hello");
