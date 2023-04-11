@@ -17,7 +17,7 @@ app.get('/items/:option', async (req, res) => {
         const filteredData = data.filter(row => row[4].toLowerCase() === option);
         res.json(filteredData);
     }
-    else if (option === "vegetable") {
+    else if (option === "vegetables") {
         const filteredData = data.filter(row => row[4].toLowerCase() === option);
         res.json(filteredData);
     }
