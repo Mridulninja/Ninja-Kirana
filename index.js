@@ -6,26 +6,39 @@ app.use(cors());
 
 const port = process.env.PORT || 5000;
 
-app.get('/items/:option', async (req, res) => {
-    const { option } = req.params;
+app.get('/items/:category/:subcategory', async (req, res) => {
+    const category = req.params.category;
+    const subcategory = req.params.subcategory;
     let data = await getDataFromSheet('1GI7rgBl2ziVPUR-wtK-7E2-psdIAOywjAf5N2IJANBI');
     data.shift();
-    if (option === "all") {
+    if (category === "all") {
+        // const filteredData = data.filter(row => row[2].toLowerCase() === subcategory);
         res.json(data);
     }
-    else if (option === "fruits") {
-        const filteredData = data.filter(row => row[4].toLowerCase() === option);
+    else if (category === "fruits") {
+        if (subcategory === "all") {
+            const filteredData = data.filter(row => row[4].toLowerCase() === category);
+            res.json(filteredData);
+        }
+        else {
+            const filteredData = data.filter(row => row[5].toLowerCase() === subcategory);
+            res.json(filteredData);
+        }
+    }
+    else if (category === "vegetable") {
+        if (subcategory === "all") {
+            const filteredData = data.filter(row => row[4].toLowerCase() === category);
+            res.json(filteredData);
+        }
+        else {
+            const filteredData = data.filter(row => row[5].toLowerCase() === subcategory);
+            res.json(filteredData);
+        }
+    }
+    else if (category === "shopno") {
+        const filteredData = data.filter(row => row[2].toLowerCase() === subcategory.toLowerCase());
         res.json(filteredData);
     }
-    else if (option === "vegetable") {
-        const filteredData = data.filter(row => row[4].toLowerCase() === option);
-        res.json(filteredData);
-    }
-    else {
-        const filteredData = data.filter(row => row[5].toLowerCase() === option);
-        res.json(filteredData);
-    }
-    // console.log("hello");
 });
 
 app.listen(port, () => {
