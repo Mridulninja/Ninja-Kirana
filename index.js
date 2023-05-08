@@ -17,21 +17,21 @@ app.get('/items/:category/:subcategory', async (req, res) => {
     }
     else if (category === "fruits") {
         if (subcategory === "all") {
-            const filteredData = data.filter(row => row[4].toLowerCase() === category);
+            const filteredData = data.filter(row => row[7].toLowerCase() === category);
             res.json(filteredData);
         }
         else {
-            const filteredData = data.filter(row => row[5].toLowerCase() === subcategory);
+            const filteredData = data.filter(row => row[8].toLowerCase() === subcategory);
             res.json(filteredData);
         }
     }
     else if (category === "vegetable") {
         if (subcategory === "all") {
-            const filteredData = data.filter(row => row[4].toLowerCase() === category);
+            const filteredData = data.filter(row => row[7].toLowerCase() === category);
             res.json(filteredData);
         }
         else {
-            const filteredData = data.filter(row => row[5].toLowerCase() === subcategory);
+            const filteredData = data.filter(row => row[8].toLowerCase() === subcategory);
             res.json(filteredData);
         }
     }
